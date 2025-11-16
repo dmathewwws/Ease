@@ -35,9 +35,30 @@ jQuery.noConflict();
                 slideBy: 3,
             },
             992: {
-                items: 4,
-                slideBy: 4,
+                items: 3,
+                slideBy: 3,
             },
         },
+    });
+})(jQuery);
+
+(function ($) {
+    'use strict';
+
+    // Toggle between featured tags and all tags
+    $('#toggleTagsBtn').on('click', function() {
+        $('#featuredTagsSection').hide();
+        $('#fullTagsSection').removeClass('hidden').show();
+        $('html, body').animate({
+            scrollTop: $('#fullTagsSection').offset().top - 100
+        }, 300);
+    });
+
+    $('#showFeaturedBtn').on('click', function() {
+        $('#fullTagsSection').hide();
+        $('#featuredTagsSection').show();
+        $('html, body').animate({
+            scrollTop: $('#featuredTagsSection').offset().top - 100
+        }, 300);
     });
 })(jQuery);

@@ -1,0 +1,53 @@
+services:
+  ghost:
+    image: ghost:5-alpine
+    container_name: ghost-local
+    restart: unless-stopped
+    ports:
+      - "2368:2368"
+    environment:
+      # Database configuration
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: ghost
+      database__connection__password: ghostpassword
+      database__connection__database: ghost
+      # Ghost configuration
+      url: http://localhost:2368
+      NODE_ENV: development
+    volumes:
+      # Mount theme directories (excludes .git, node_modules, etc.)
+      - ./assets:/var/lib/ghost/content/themes/ease/assets
+      - ./partials:/var/lib/ghost/content/themes/ease/partials
+
+      # Mount theme template files
+      - ./default.hbs:/var/lib/ghost/content/themes/ease/default.hbs
+      - ./index.hbs:/var/lib/ghost/content/themes/ease/index.hbs
+      - ./post.hbs:/var/lib/ghost/content/themes/ease/post.hbs
+      - ./page.hbs:/var/lib/ghost/content/themes/ease/page.hbs
+      - ./author.hbs:/var/lib/ghost/content/themes/ease/author.hbs
+      - ./tag.hbs:/var/lib/ghost/content/themes/ease/tag.hbs
+
+      # Mount theme configuration
+      - ./package.json:/var/lib/ghost/content/themes/ease/package.json
+
+      # Persist Ghost data
+      - ghost-data:/var/lib/ghost/content
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: ghost-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: ghostpassword
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  ghost-data:
+  db-data:

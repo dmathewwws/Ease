@@ -7,34 +7,90 @@
         {{> "featured-posts"}}
     {{/if}}
 
+    <section class="featured-tags-section" id="featuredTagsSection">
+
+        <header class="featured-tags-header">
+            <h2 class="featured-tags-title topic-name">Our Events</h2>
+        </header>
+
+        <div class="featured-tags-grid">
+
+            <a href="/tag/at-protocol/" class="featured-tag-card">
+                <h2 class="featured-tag-name">AT Protocol</h2>
+                <p class="featured-tag-description">Explore the decentralized foundation powering social networks like Bluesky.</p>
+            </a>
+
+            <a href="/tag/bookclub/" class="featured-tag-card">
+                <h2 class="featured-tag-name">Bookclub</h2>
+                <p class="featured-tag-description">Every month we read a book releated to the DWeb principles. Join us for the discussion!</p>
+            </a>
+
+            <a href="/tag/dweb-camp-cascadia/" class="featured-tag-card">
+                <h2 class="featured-tag-name">Cascadia Camp</h2>
+                <p class="featured-tag-description">An outdoor camping / unconference for the DWeb community in the Pacific Northwest.</p>
+            </a>
+
+            <a href="/tag/folk-tech/" class="featured-tag-card">
+                <h2 class="featured-tag-name">Folk Tech</h2>
+                <p class="featured-tag-description">A movement to build technology designed for regular folks, not users or consumers.</p>
+            </a>
+
+            <a href="/tag/local-first/" class="featured-tag-card">
+                <h2 class="featured-tag-name">Local First / Local AI</h2>
+                <p class="featured-tag-description">You don't always need a server, and you don't always need ChatGPT.</p>
+            </a>
+
+            <a href="/tag/mesh-curious/" class="featured-tag-card">
+                <h2 class="featured-tag-name">Mesh Curious</h2>
+                <p class="featured-tag-description">Join us as we experiment with low-power wireless mesh networking, including Meshtastic and Meshcore.</p>
+            </a>
+
+            <a href="/tag/hack-days/" class="featured-tag-card">
+                <h2 class="featured-tag-name">Sunday Hack Days</h2>
+                <p class="featured-tag-description">Laid back hack days where you are encouraged to work on your own projects.</p>
+            </a>
+
+        </div>
+
+        <div class="all-tags-button-wrapper">
+            <button class="all-tags-button" id="toggleTagsBtn">View All</button>
+        </div>
+    </section>
+
     {{#get "tags" limit="100"}}
-    <div class="topic-feed">
+    <section class="full-tags-section hidden" id="fullTagsSection">
+        <div class="topic-feed">
 
-        {{#foreach tags}}
-            <section class="topic">
-                <header class="topic-header">
-                    <h2 class="topic-name">
-                        <a href="{{url}}">{{name}}</a>
-                    </h2>
-                </header>
-                {{#get "posts" order="published_at asc" filter="tag:{{slug}}" limit="5" as |featured|}}
-                    <ul class="topic-article-feed">
-                        {{#foreach featured}}
-                        <li class="topic-article">
-                            <h3 class="topic-article-title">
-                                <a class="topic-article-link" href="{{url}}">
-                                    {{> "icons/chevron-right"}} {{title}}
-                                </a>
-                            </h3>
-                        </li>
-                        {{/foreach}}
-                    </ul>
-                {{/get}}
-                <a class="topic-more" href="{{url}}">Show more →</a>
-            </section>
-        {{/foreach}}
+            {{#foreach tags}}
+                <section class="topic">
+                    <header class="topic-header">
+                        <h2 class="topic-name">
+                            <a href="{{url}}">{{name}}</a>
+                        </h2>
+                    </header>
+                    {{#get "posts" order="published_at asc" filter="tag:{{slug}}" limit="5" as |featured|}}
+                        <ul class="topic-article-feed">
+                            {{#foreach featured}}
+                            <li class="topic-article">
+                                <h3 class="topic-article-title">
+                                    <a class="topic-article-link" href="{{url}}">
+                                        {{> "icons/chevron-right"}} {{title}}
+                                    </a>
+                                </h3>
+                            </li>
+                            {{/foreach}}
+                        </ul>
+                    {{/get}}
+                    <a class="topic-more" href="{{url}}">Show more →</a>
+                </section>
+            {{/foreach}}
 
-    </div>
+        </div>
+
+        <div class="all-tags-button-wrapper">
+            <button class="all-tags-button" id="showFeaturedBtn">Show Featured Tags</button>
+        </div>
+    </section>
     {{/get}}
 
 </main>

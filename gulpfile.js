@@ -83,6 +83,12 @@ function zipper(done) {
             '**',
             '!node_modules', '!node_modules/**',
             '!dist', '!dist/**',
+            '!.git', '!.git/**',
+            '!docker-compose.yml',
+            '!.dockerignore',
+            '!.DS_Store',
+            '!.gitignore',
+            '!yarn.lock',
             '!yarn-error.log'
         ]),
         zip(filename),

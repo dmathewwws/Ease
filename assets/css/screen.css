@@ -6,6 +6,7 @@
 @import "site/cover.css";
 @import "site/search.css";
 @import "site/topic.css";
+@import "site/featured-tags.css";
 @import "site/term.css";
 @import "blog/post.css";
 @import "blog/feed.css";

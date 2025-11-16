@@ -9,21 +9,33 @@ A versatile [Ghost](https://github.com/TryGhost/Ghost) theme suitable for docume
 1. [Download this theme](https://github.com/TryGhost/Ease/archive/main.zip)
 2. Log into Ghost, and go to the `Design` settings area to upload the zip file
 
-# Development
+## Local Testing with Docker
 
-Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
+To test the theme locally with a full Ghost installation:
 
 ```bash
-# Install
-yarn
-
-# Run build & watch for changes
-yarn dev
+# Start Ghost with Docker
+docker-compose up
 ```
 
-Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
+This will:
+- Start a Ghost instance at `http://localhost:2368`
+- Mount the theme files for live development
+- Set up a MySQL database with persistent storage
 
-The `zip` Gulp task packages the theme files into `dist/ease.zip`, which you can then upload to your site.
+Once Ghost is running, you can:
+1. Visit `http://localhost:2368` to see your site
+2. Access the admin panel at `http://localhost:2368/ghost`
+3. Make changes to the theme files - they'll be reflected immediately
+4. Use `yarn zip` to package the theme for distribution
+
+To stop the Docker environment:
+
+```bash
+docker-compose down
+```
+
+## Packaging the theme for distribution
 
 ```bash
 yarn zip
