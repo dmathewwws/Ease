@@ -1,0 +1,41 @@
+{{!< default}}
+
+{{#post}}
+<main class="site-main">
+    <article class="{{post_class}}">
+        {{#match @page.show_title_and_feature_image}}
+            <header class="gh-article-header gh-canvas">
+                <h1 class="gh-article-title">{{title}}</h1>
+                {{> "post-image"}}
+            </header>
+        {{/match}}
+
+        <div class="post-content gh-content gh-canvas">
+            {{content}}
+        </div>
+    </article>
+
+    <section class="bookclub-posts gh-canvas">
+        <header class="topic-header">
+            <h2 class="topic-name">Recent Posts</h2>
+        </header>
+        {{#get "posts" filter="tag:bookclub" limit="20" order="published_at desc"}}
+            <div class="simple-post-list">
+                {{#foreach posts}}
+                <article class="simple-post-item">
+                    <a href="{{url}}">
+                        <h3 class="simple-post-title">{{title}}</h3>
+                    </a>
+                    <p class="simple-post-excerpt">{{excerpt words="15"}}</p>
+                    <time class="simple-post-date" datetime="{{date format="YYYY-MM-DD"}}">
+                        {{date format="MMMM D, YYYY"}}
+                    </time>
+                </article>
+                {{/foreach}}
+            </div>
+        {{else}}
+            <p>No Bookclub posts found.</p>
+        {{/get}}
+    </section>
+</main>
+{{/post}}

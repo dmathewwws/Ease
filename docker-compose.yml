@@ -25,6 +25,15 @@ services:
       - ./index.hbs:/var/lib/ghost/content/themes/ease/index.hbs
       - ./post.hbs:/var/lib/ghost/content/themes/ease/post.hbs
       - ./page.hbs:/var/lib/ghost/content/themes/ease/page.hbs
+      - ./page-sitemap.hbs:/var/lib/ghost/content/themes/ease/page-sitemap.hbs
+      - ./page-meshcurious.hbs:/var/lib/ghost/content/themes/ease/page-meshcurious.hbs
+      - ./page-atprotocol.hbs:/var/lib/ghost/content/themes/ease/page-atprotocol.hbs
+      - ./page-bookclub.hbs:/var/lib/ghost/content/themes/ease/page-bookclub.hbs
+      - ./page-camp.hbs:/var/lib/ghost/content/themes/ease/page-camp.hbs
+      - ./page-folktech.hbs:/var/lib/ghost/content/themes/ease/page-folktech.hbs
+      - ./page-localfirst.hbs:/var/lib/ghost/content/themes/ease/page-localfirst.hbs
+      - ./page-workshops.hbs:/var/lib/ghost/content/themes/ease/page-workshops.hbs
+      - ./page-events.hbs:/var/lib/ghost/content/themes/ease/page-events.hbs
       - ./author.hbs:/var/lib/ghost/content/themes/ease/author.hbs
       - ./tag.hbs:/var/lib/ghost/content/themes/ease/tag.hbs
 
