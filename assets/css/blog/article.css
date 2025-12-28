@@ -5,3 +5,7 @@
 .gh-article-subtitle {
     padding: 1rem 0;
 }
+
+.gh-article-subtitle a {
+    color: var(--primary-color);
+}
