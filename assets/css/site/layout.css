@@ -54,6 +54,18 @@
     margin-bottom: 1.25rem;
 }
 
+/* Principle highlight - pill style */
+.principle-highlight {
+    font-weight: 600;
+    color: #8b2942;
+    background-color: rgba(219, 112, 147, 0.2);
+    padding: 2px 8px;
+    margin: 2px;
+    border-radius: 4px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
 .hero-body {
     font-size: 1.5rem;
     line-height: 1.7;
